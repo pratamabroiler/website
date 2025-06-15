@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil Usaha - Pratama Broiler</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-green: #FFA500;
+      --secondary-green: #FFB300;
+      --accent-brown: #D2B48C;
+      --accent-cream: #F5F5DC;
+      --accent-gold: #FFD700;
+      --accent-orange: #FFA500;
+    }
+
+    .bg-primary-green { background-color: var(--primary-green); }
+    .bg-secondary-green { background-color: var(--secondary-green); }
+    .bg-accent-brown { background-color: var(--accent-brown); }
+    .bg-accent-cream { background-color: var(--accent-cream); }
+    .bg-accent-gold { background-color: var(--accent-gold); }
+    .bg-accent-orange { background-color: var(--accent-orange); }
+    
+    .text-primary-green { color: var(--primary-green); }
+    .text-secondary-green { color: var(--secondary-green); }
+    .text-accent-brown { color: var(--accent-brown); }
+    .text-accent-orange { color: var(--accent-orange); }
+
+    .border-primary-green { border-color: var(--primary-green); }
+    .border-accent-gold { border-color: var(--accent-gold); }
+
+    .hover\:bg-secondary-green:hover { background-color: var(--secondary-green); }
+    .hover\:bg-accent-orange:hover { background-color: var(--accent-orange); }
+
+    @keyframes kenburns {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.1) translate(-2%, 2%);
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition-delay: var(--stagger-delay, 0ms);
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+      box-shadow: 0 4px 20px rgba(40, 84, 48, 0.1);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 30px rgba(40, 84, 48, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .section-divider {
+      background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 50%, transparent 100%);
+      height: 2px;
+      width: 100px;
+      margin: 0 auto;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-orange) 100%);
+      color: #000000;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .feature-badge {
+      background: linear-gradient(135deg, var(--accent-cream) 0%, #ffffff 100%);
+      border: 2px solid var(--accent-gold);
+      color: var(--primary-green);
+    }
+
+    .text-with-outline {
+    /* Membuat 4 bayangan di setiap sisi untuk menghasilkan efek garis tepi */
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000, 
+        -1px  1px 0 #000, 
+        1px  1px 0 #000;
+    }    
+
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+<nav class="bg-primary-green text-white h-20 overflow-hidden shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto flex flex-wrap justify-between items-center h-full px-4">
+    <div class="flex items-center space-x-4 h-full">
+      <a href="#home" class="flex items-center space-x-4 h-full">
+        <img src="Image/logo.png" alt="Logo" class="h-12 w-auto object-contain" />
+        <h1 class="text-xl font-bold">Pratama Broiler</h1>
+      </a>
+    </div>
+    <div class="space-x-6 mt-2 sm:mt-0 text-lg">
+      <a href="#home" class="nav-link hover:text-yellow-300 transition-all duration-200">Home</a>
+      <a href="#about" class="nav-link hover:text-yellow-300 transition-all duration-200">About Us</a>
+      <a href="#product" class="nav-link hover:text-yellow-300 transition-all duration-200">Product</a>
+      <a href="#kontak" class="nav-link hover:text-yellow-300 transition-all duration-200">Contact Us</a>
+      <a href="#order" class="nav-link hover:text-yellow-300 transition-all duration-200">Order</a>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="relative h-screen text-center px-4 md:px-10 overflow-hidden">
+  <img src="Image/Home.jpg" alt="Home" class="absolute inset-0 w-full h-full object-cover" />
+  <div class="relative z-10 flex flex-col items-center justify-center h-full">
+    <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white text-with-outline animate-on-scroll" style="--stagger-delay: 100ms;">PRATAMA BROILER</h2>
+    <p class="text-lg md:text-xl mb-8 text-white font-bold max-w-2xl animate-on-scroll" style="--stagger-delay: 300ms;">Menyediakan daging ayam segar berkualitas tinggi dengan standar kebersihan dan kehalalan terjamin untuk kebutuhan keluarga Indonesia.</p>
+    <div class="flex flex-wrap justify-center gap-4 mb-8 animate-on-scroll" style="--stagger-delay: 500ms;">
+      <span class="feature-badge px-6 py-3 rounded-full text-lg font-semibold">🌿 Fresh</span>
+      <span class="feature-badge px-6 py-3 rounded-full text-lg font-semibold">✨ Bersih</span>
+      <span class="feature-badge px-6 py-3 rounded-full text-lg font-semibold">⭐ Berkualitas</span>
+      <span class="feature-badge px-6 py-3 rounded-full text-lg font-semibold">🕌 Halal</span>
+    </div>
+
+    <a href="#order" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold animate-on-scroll" style="--stagger-delay: 700ms;">
+      Pesan Sekarang
+    </a>
+  </div>
+</section>
+
+<section id="about" class="p-8 md:p-16 max-w-7xl mx-auto overflow-hidden">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-primary-green animate-on-scroll">Tentang Kami</h2>
+    <div class="section-divider animate-on-scroll" style="--stagger-delay: 100ms;"></div>
+  </div>
+  
+  <div class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-12 bg-accent-cream rounded-3xl p-8 md:p-12">
+    
+    <div class="lg:w-3/5 animate-on-scroll" style="--stagger-delay: 200ms;">
+      <h3 class="text-3xl font-bold mb-6 text-primary-green">PRATAMA BROILER</h3>
+      <p class="mb-6 text-lg leading-relaxed text-gray-700">
+        Pratama Broiler adalah toko penyedia ayam potong segar, halal, dan berkualitas tinggi yang berlokasi di Bandung.
+        Kami menyediakan berbagai bagian ayam seperti dada, paha, sayap, ceker, kulit, dan ayam utuh yang diproses secara higienis sesuai standar kebersihan dan kehalalan.
+      </p>
+      <p class="text-lg leading-relaxed text-gray-700 mb-8">
+        Dengan sistem pemeliharaan modern dan pengiriman cepat, Pratama Broiler siap memenuhi kebutuhan rumah tangga, usaha kuliner, hingga reseller.
+      </p>
+      
+      <div class="grid grid-cols-2 gap-6">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-accent-orange mb-2">100%</div>
+          <div class="text-sm text-gray-600">Halal & Higienis</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-accent-orange mb-2">24/7</div>
+          <div class="text-sm text-gray-600">Layanan Order</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 lg:mt-0 lg:w-2/5 flex justify-center animate-on-scroll" style="--stagger-delay: 400ms;">
+      <div class="flex flex-col items-center space-y-6">
+        <img src="Image/Logo.png" alt="Logo Pratama Broiler" class="w-50 md:w- object-contain drop-shadow-lg" />
+        <img src="Image/halal3.png" alt="Logo Halal" class="w-36 md:w-34 object-contain drop-shadow-lg" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="product" class="p-8 md:p-16 bg-gradient-to-br from-green-50 to-yellow-50 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-primary-green animate-on-scroll">Produk Kami</h2>
+      <div class="section-divider animate-on-scroll" style="--stagger-delay: 100ms;"></div>
+      <p class="text-lg text-gray-600 mt-6 animate-on-scroll" style="--stagger-delay: 200ms;">Pilihan lengkap daging ayam segar untuk berbagai kebutuhan kuliner Anda</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div class="product-card p-6 rounded-2xl animate-on-scroll">
+        <img src="Image/Produk/produk1.jpg" alt="Produk 1" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Karkas Potong 10</h3>
+        <p class="text-sm text-gray-600">Ayam potong segar siap masak</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 100ms;">
+        <img src="Image/Produk/produk2.jpg" alt="Produk 2" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Sayap Ayam</h3>
+        <p class="text-sm text-gray-600">Sayap ayam segar berkualitas</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 200ms;">
+        <img src="Image/Produk/produk3.jpg" alt="Produk 3" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Pentul Ayam</h3>
+        <p class="text-sm text-gray-600">Bagian pentul ayam pilihan</p>
+      </div>
+      
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 300ms;">
+        <img src="Image/Produk/produk4.jpg" alt="Produk 4" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Paha Atas Bawah</h3>
+        <p class="text-sm text-gray-600">Paha ayam lengkap segar</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 50ms;">
+        <img src="Image/Produk/produk5.jpg" alt="Produk 5" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Ceker Ayam Bersih</h3>
+        <p class="text-sm text-gray-600">Ceker ayam sudah dibersihkan</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 150ms;">
+        <img src="Image/Produk/produk6.jpg" alt="Produk 6" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Ati Ampela</h3>
+        <p class="text-sm text-gray-600">Jeroan ayam segar berkualitas</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 250ms;">
+        <img src="Image/Produk/produk16.jpg" alt="Produk 15" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Kepala Ayam</h3>
+        <p class="text-sm text-gray-600">Kepala ayam segar</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 350ms;">
+        <img src="Image/Produk/produk7.jpg" alt="Produk 7" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Kulit Ayam</h3>
+        <p class="text-sm text-gray-600">Kulit ayam untuk keripik</p>
+      </div>
+      
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 100ms;">
+        <img src="Image/Produk/produk8.jpg" alt="Produk 8" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Slice Katsu Fillet Dada</h3>
+        <p class="text-sm text-gray-600">Fillet dada siap katsu</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 200ms;">
+        <img src="Image/Produk/produk9.jpg" alt="Produk 9" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Fillet Dada</h3>
+        <p class="text-sm text-gray-600">Daging dada tanpa tulang</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 300ms;">
+        <img src="Image/Produk/produk10.jpg" alt="Produk 10" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Fillet Paha Kulit</h3>
+        <p class="text-sm text-gray-600">Fillet paha dengan kulit</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 400ms;">
+        <img src="Image/Produk/produk11.jpg" alt="Produk 11" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Fillet Paha Ayam</h3>
+        <p class="text-sm text-gray-600">Paha ayam tanpa tulang</p>
+      </div>
+      
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 150ms;">
+        <img src="Image/Produk/produk12.jpg" alt="Produk 12" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Fillet Dada Ayam</h3>
+        <p class="text-sm text-gray-600">Daging dada premium</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 250ms;">
+        <img src="Image/Produk/produk13.jpg" alt="Produk 13" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Dada Ayam Potong</h3>
+        <p class="text-sm text-gray-600">Dada ayam siap masak</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 350ms;">
+        <img src="Image/Produk/produk14.jpg" alt="Produk 14" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Usus Ayam</h3>
+        <p class="text-sm text-gray-600">Usus ayam bersih segar</p>
+      </div>
+
+      <div class="product-card p-6 rounded-2xl animate-on-scroll" style="--stagger-delay: 450ms;">
+        <img src="Image/Produk/produk15.jpg" alt="Produk 15" class="w-full h-48 object-cover rounded-xl mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-primary-green">Tulang Paha Ayam</h3>
+        <p class="text-sm text-gray-600">Tulang paha untuk kaldu</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak" class="p-8 md:p-16 max-w-6xl mx-auto overflow-hidden">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-primary-green animate-on-scroll">Hubungi Kami</h2>
+    <div class="section-divider animate-on-scroll" style="--stagger-delay: 100ms;"></div>
+  </div>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div class="bg-accent-cream rounded-2xl p-8 animate-on-scroll" style="--stagger-delay: 200ms;">
+      <h3 class="text-2xl font-bold text-primary-green mb-6">Informasi Kontak</h3>
+      <div class="space-y-6">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-accent-gold rounded-full flex items-center justify-center mr-4">
+            <span class="text-2xl">📱</span>
+          </div>
+          <div>
+            <div class="font-semibold text-primary-green">WhatsApp</div>
+            <a href="https://wa.me/6281222791903" target="_blank" class="text-accent-orange hover:underline text-lg">+62 812-2279-1903</a>
+          </div>
+        </div>
+        
+        <div class="flex items-start">
+          <div class="w-12 h-12 bg-accent-gold rounded-full flex items-center justify-center mr-4 mt-1">
+            <span class="text-2xl">📍</span>
+          </div>
+          <div>
+            <div class="font-semibold text-primary-green mb-2">Alamat Toko</div>
+              <div class="text-gray-700 leading-relaxed">
+                Pengolahan daging sapi dan ayam (<strong>CITRA</strong>)<br />
+                Jl. Nagrog No.12-10, Pasirjati, Kec. Ujung Berung,<br />
+                Kota Bandung, Jawa Barat 40618<br />
+                <a href="https://maps.app.goo.gl/SaE5FRmUzuqFw3sE8" target="_blank" class="text-blue-500 font-bold hover:underline">
+                    LOKASI
+                </a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full h-64 md:h-96 rounded overflow-hidden shadow">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63304.1138123225!2d107.58821330928551!3d-6.923650324102502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f20!3m3!1m2!1s0x2e68e7f4eb2b0a07%3A0x953fbf5abde04c6f!2sJl.%20Nagrog%20No.12-10%2C%20Pasirjati%2C%20Ujung%20Berung%2C%20Bandung%20City%2C%20West%20Java%2040618%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1686838162297!5m2!1sen!2sid" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="p-8 md:p-16 bg-gradient-to-br from-accent-cream to-white overflow-hidden">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-primary-green animate-on-scroll">Pesan Sekarang</h2>
+      <div class="section-divider animate-on-scroll" style="--stagger-delay: 100ms;"></div>
+      <p class="text-lg text-gray-600 mt-6 animate-on-scroll" style="--stagger-delay: 200ms;">Pilih platform favorit Anda untuk memesan produk segar kami</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 justify-items-center items-center">
+      <a href="https://api.whatsapp.com/send?phone=6281222791903" target="_blank" class="group animate-on-scroll" style="--stagger-delay: 300ms;">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 border-2 border-transparent hover:border-accent-gold">
+          <img src="Image/Order/Wa.png" alt="Pesan via WhatsApp" class="w-24 sm:w-28 mx-auto" />
+        </div>
+      </a>
+
+      <a href="https://shopee.co.id/pratamabroilerbdg" target="_blank" class="group animate-on-scroll" style="--stagger-delay: 400ms;">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 border-2 border-transparent hover:border-accent-gold">
+          <img src="Image/Order/Shopee.png" alt="Pesan di Shopee" class="w-24 sm:w-28 mx-auto" />
+        </div>
+      </a>
+
+      <a href="https://www.tiktok.com/@pratamabroiler?_t=ZS-8xDu6e3Ilc5&_r=1" target="_blank" class="group animate-on-scroll" style="--stagger-delay: 500ms;">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 border-2 border-transparent hover:border-accent-gold">
+          <img src="Image/Order/TiktokShop.png" alt="Pesan di TikTok Shop" class="w-24 sm:w-28 mx-auto" />
+        </div>
+      </a>
+
+      <a href="https://www.tokopedia.com/pratamabroiler/product?utm_source=salinlink&utm_medium=share&utm_campaign=Shop-76186442-18303575-Semua" target="_blank" class="group animate-on-scroll" style="--stagger-delay: 600ms;">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 border-2 border-transparent hover:border-accent-gold">
+          <img src="Image/Order/Tokopedia.png" alt="Pesan di Tokopedia" class="w-24 sm:w-28 mx-auto" />
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-primary-green text-white">
+  <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+
+    <div class="flex flex-col items-center md:items-start">
+      <img src="Image/Logo.png" alt="Logo Pratama Broiler" class="h-20 w-20 mb-4" />
+      <h3 class="text-xl font-bold mb-2">Pratama Broiler</h3>
+      <p class="text-accent-gold font-semibold">Fresh • Bersih • Berkualitas • Halal</p>
+    </div>
+
+    <div class="text-center md:text-left">
+      <h4 class="font-bold text-xl mb-6 text-accent-gold">Navigasi</h4>
+      <ul class="space-y-3">
+        <li><a href="#home" class="hover:text-accent-gold transition-colors">Home</a></li>
+        <li><a href="#about" class="hover:text-accent-gold transition-colors">About Us</a></li>
+        <li><a href="#product" class="hover:text-accent-gold transition-colors">Product</a></li>
+        <li><a href="#kontak" class="hover:text-accent-gold transition-colors">Contact Us</a></li>
+        <li><a href="#order" class="hover:text-accent-gold transition-colors">Order</a></li>
+      </ul>
+    </div>
+
+    <div class="text-center md:text-left">
+      <h4 class="font-bold text-xl mb-6 text-accent-gold">Kontak</h4>
+      <ul class="space-y-3">
+        <li class="flex items-center justify-center md:justify-start">
+          <span class="mr-2">📞</span>
+          <span>+62 812-2279-1903</span>
+        </li>
+        <li class="flex items-start justify-center md:justify-start">
+          <span class="mr-2 mt-1">📍</span>
+          <div>
+            <div>Jl. Nagrog No.12-10, Pasirjati,</div>
+            <div>Kec. Ujung Berung, Kota Bandung,</div>
+            <div>Jawa Barat 40618</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="text-center bg-secondary-green py-4 text-sm border-t border-accent-gold">
+    <p>© 2025 Pratama Broiler. All rights reserved.</p>
+    <p class="mt-1 text-accent-gold">Dipercaya untuk kesegaran terbaik</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+    });
+
+    animatedElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
+
+</body>
+</html>
